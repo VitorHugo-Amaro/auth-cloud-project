@@ -1,0 +1,32 @@
+name: Deploy to GCP
+on: 
+  push:
+      branches: [main]
+  pull_request:
+      branches: [main]
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: './backend/package-lock.json'
+
+      - name: Install Dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Run Tests
+        run: |
+          cd backend
+          npm test
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }} 
+          

@@ -1,0 +1,25 @@
+import express,{type Request,type Response} from "express";
+import jwt from "jsonwebtoken";
+import cors from 'cors';
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const token = jwt
+const app = express()
+app.use(express.json());
+app.use(cors());  
+
+const  SECRET_KEY = process.env.JWT_SECRET || "fallback";
+app.post('/login' , (req:Request, res:Response)=>{
+    const {email,password} = req.body;
+    if(email=="vitoor@hugo.com" && password == "1234"){
+        token.sign({email},SECRET_KEY,{expiresIn:'1h'});
+        return res.status(200).json({auth:true,token});
+    }
+    return res.status(401).json({message:'Login inválido'})
+});
+if (require.main==module){
+    app.listen(3000,() =>console.log('Servidor rodadno na porta 3000'));
+}
+export default app;
