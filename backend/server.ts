@@ -2,6 +2,7 @@ import express,{type Request,type Response} from "express";
 import jwt from "jsonwebtoken";
 import cors from 'cors';
 import dotenv from "dotenv";
+import { fileURLToPath } from 'node:url';
 
 dotenv.config();
 
@@ -19,7 +20,8 @@ app.post('/login' , (req:Request, res:Response)=>{
     }
     return res.status(401).json({message:'Login inválido'})
 });
-if (require.main==module){
-    app.listen(3000,() =>console.log('Servidor rodadno na porta 3000'));
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
 }
+
 export default app;
