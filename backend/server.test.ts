@@ -2,6 +2,7 @@ import request from 'supertest'
 import app from './server.ts'
 import { describe, it } from 'node:test'
 
+//testando
 
 describe('Testando o Fluxo de Login com TS', () => {
     it('Deve logar com sucesso', async () => {
