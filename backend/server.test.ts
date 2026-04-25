@@ -1,8 +1,5 @@
-import request from 'supertest'
-import app from './server.ts'
-import { describe, it } from 'node:test'
-
-//testando
+import request from 'supertest';
+import app from './server.js'; 
 
 describe('Testando o Fluxo de Login com TS', () => {
     it('Deve logar com sucesso', async () => {
@@ -14,4 +11,3 @@ describe('Testando o Fluxo de Login com TS', () => {
         expect(res.body).toHaveProperty('token');
     });
 });
-

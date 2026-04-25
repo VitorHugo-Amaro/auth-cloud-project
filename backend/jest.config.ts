@@ -4,6 +4,7 @@ const jestConfig: JestConfigWithTsJest = {
   preset: 'ts-jest/presets/default-esm', // 
   testEnvironment: 'node',
   extensionsToTreatAsEsm: ['.ts'],
+  moduleDirectories: ['node_modules', '<rootDir>'],
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
