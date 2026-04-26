@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from './server.js'; 
+import app from './server.ts'; 
 
 describe('Testando o Fluxo de Login com TS', () => {
     it('Deve logar com sucesso', async () => {
