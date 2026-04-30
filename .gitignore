@@ -1,7 +1,8 @@
 .env
 .node_modules
 
-terraform/
+.terraform/
 *.tfstate
 *.tfstate.backup
+*.json
 
